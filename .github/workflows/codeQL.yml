@@ -20,8 +20,13 @@ jobs:
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v1
-        with:
-          languages: python, java
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
+  analyze:
+   runs-on: ubuntu-latest
+   name: Analyze
+   strategy:
+      fail-fast: false
+      matrix:
+        language: ['javascript-typescript', 'python']
